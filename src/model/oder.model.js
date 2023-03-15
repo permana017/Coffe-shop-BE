@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require('uuid');
 const orderModel = {
 
 
-    query: (queryParams, sortType = 'asc', limit = 5, offset = 0 ) => {
+    query: (queryParams, sortType = 'asc', limit = 25, offset = 0 ) => {
         if (queryParams.search) {
             return `WHERE title LIKE '%${queryParams.search}%' ORDER BY title ${sortType} LIMIT ${limit} OFFSET ${offset}`;
         } else if (queryParams.search) {

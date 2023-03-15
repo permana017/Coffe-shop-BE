@@ -1,4 +1,5 @@
 const userModel = require("../model/users.model")
+const { unlink } = require('node:fs');
 
 
 const userController = {
@@ -32,13 +33,12 @@ const userController = {
         // console.log("haiiii",result[0].img);
         return userModel.update(req, id)
         .then((result) => {
-            console.log("result", result);
-            if (result[0].img!= null){
-                for (let i = 0; i < result.length; i++) {
-                    unlink(`public/upload/images/${result[i].img}`, (err) => {
-                        if (err) throw err;
-                    });
-                }
+            console.log("result imagessss",result[0].img);
+            if (result[0].img != null){
+                console.log("masuk pak eko");
+                unlink(`public/upload/images/${result[0].img}`, (err) => {
+                    if (err) throw err;
+                });
             }
             return res.status(201).send({ message: `Successfully update data id=${id}`})
         }).catch((error)=> {
