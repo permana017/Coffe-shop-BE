@@ -68,7 +68,6 @@ const userModel = {
                     if(err) {
                         return res.status(500).send({ message: err.message })
                     }else {
-                      
                         db.query(
                           `UPDATE users SET name='${name || result.rows[0].name}', email='${email || result.rows[0].email}',address='${address || result.rows[0].address}',img='${(req.file != undefined) ? req.file.filename : result.rows[0].img}', username='${username || result.rows[0].username}' WHERE id='${id}'`,
                             (err) => {
