@@ -35,10 +35,13 @@ const userController = {
         .then((result) => {
             console.log("result imagessss",result[0].img);
             if (result[0].img != null){
-                console.log("masuk pak eko");
-                unlink(`public/upload/images/${result[0].img}`, (err) => {
-                    if (err) throw err;
-                });
+                if (typeof req.file !== "undefined" ) {
+                    unlink(`public/upload/images/${result[0].img}`, (err) => {
+                        if (err) throw err;
+                    });
+                } else {
+                    return res.status(201).send({ message: `Successfully update data id=${id}`}) 
+                }
             }
             return res.status(201).send({ message: `Successfully update data id=${id}`})
         }).catch((error)=> {

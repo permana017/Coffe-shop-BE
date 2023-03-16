@@ -42,15 +42,16 @@ const productController = {
         }
         return productModel.update(request)
         .then((result)=> {
-            // console.log(result.oldImages)
             if(typeof result.oldImages != "undefined"){
-                for (let index = 0; index < result.oldImages.length; index++) {
-                    // console.log(result.oldImages[index].filename)
-                    unlink(`public/upload/images/${result.oldImages[index].filename}`, (err) => {
-                        // if (err) throw err;
-                        console.log(`successfully deleted ${result.oldImages[index].filename}`);
-                    });
+                if (typeof request.file != "undefined") {
+                    for (let index = 0; index < result.oldImages.length; index++) {
+                        unlink(`public/upload/images/${result.oldImages[index].filename}`, (err) => {
+                            // if (err) throw err;
+                            console.log(`successfully deleted ${result.oldImages[index].filename}`);
+                        });
+                    }
                 }
+                return res.status(201).send({ message: "succes", data: result })
             }
             return res.status(201).send({ message: "succes", data: result })
         }).catch((error)=> {

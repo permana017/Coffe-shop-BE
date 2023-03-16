@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require('uuid');
 
 
 const productModel = {
-    query: (queryParams, sortType = 'asc', limit = 10, offset = 0 ) => {
+    query: (queryParams, sortType = 'asc', limit = 12, offset = 0 ) => {
         if (queryParams.search && queryParams.cat) {
             return `WHERE tittle LIKE '%${queryParams.search}%' AND category LIKE '%${queryParams.cat}%' ORDER BY tittle ${sortType} LIMIT ${limit} OFFSET ${offset}`;
         } else if (queryParams.search || queryParams.cat) {
@@ -17,7 +17,7 @@ const productModel = {
 
     get: function (queryParams) {
         // console.log(queryParams)
-        const {page=1, limit= 10, search='', cat=""} = queryParams
+        const {page=1, limit= 12, search='', cat=""} = queryParams
         return new Promise((resolve, reject) => {
             db.query(
                 `SELECT
