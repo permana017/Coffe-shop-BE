@@ -51,7 +51,7 @@ auth endpoint
     POST      /api/v1/auth/login
     POST      /api/v1/auth/register
     
-products
+products endpoint
     
     GET      /api/v1/products
     GET      /api/v1/products:id
