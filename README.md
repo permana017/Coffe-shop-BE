@@ -1,53 +1,72 @@
-# PermanaCoffe
+## PermanaCoffe-server
 
-Website for simple Coffeeshop.
+This is a ExpressJs-based API for [frontend project](https://github.com/permana017/Coffe-shop-FE). It uses PostgreSQL as its database
 
-## About The Project
+## Getting started
 
-The PermanaCoffee app lets users browse and order food and drink menus, pay online, pre-order, and leave reviews.
-It's an efficient solution for cafe-goers who want to skip the queue and enjoy their favorites.
+To get the Node server running locally:
 
-## BackEend
+* Clone this repo with `https://github.com/permana017/Coffe-shop-BE.git`
+* `cd backend`
+* `npm install` to install all required dependencies
+* `node index.js` to start the local server
 
-https://github.com/permana017/Coffe-shop-BE
 
-## Built With:
-### Language
- ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+## Folder Structure
 
-### Framework/Library/Additional
-![React.js](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) 	![JWT000](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens) 
+     ┣ 📂public
+     ┃ ┗ 📂uploads
+     ┃ ┃ ┗ 📂images
+     ┣ 📂src
+     ┃ ┣ 📂controllers
+     ┃ ┃ ┣ 📜auth.controller.js
+     ┃ ┃ ┣ 📜image.controller.js
+     ┃ ┃ ┣ 📜order.controller.js
+     ┃ ┃ ┣ 📜product.controller.js
+     ┃ ┃ ┣ 📜users.controller.js
+     ┃ ┣ 📂model
+     ┃ ┃ ┣ 📜auth.model.js
+     ┃ ┃ ┣ 📜image.model.js
+     ┃ ┃ ┣ 📜order.model.js
+     ┃ ┃ ┣ 📜product.model.js
+     ┃ ┃ ┣ 📜users.model.js
+     ┃ ┗ 📂view
+     ┃ ┃ ┣ 📜auth.route.js
+     ┃ ┃ ┣ 📜image.route.js
+     ┃ ┃ ┣ 📜index.route.js
+     ┃ ┃ ┣ 📜order.route.js
+     ┃ ┃ ┣ 📜product.route.js
+     ┃ ┃ ┣ 📜users.route.js
+    
+## Endpoints
+users endpoint
 
-### Version Control
-![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+    GET      /api/v1/users
+    GET      /api/v1/users/:id
+    PATCH    /api/v1/users/:id
+    DEL      /api/v1/users/:id
+    
+auth endpoint
 
-### Others
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white) ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white) 
+    POST      /api/v1/auth/login
+    POST      /api/v1/auth/register
+    
+products
+    
+    GET      /api/v1/products
+    GET      /api/v1/products:id
+    POST     /api/v1/products
+    PATCH    /api/v1/products:id
+    DEL      /api/v1/products:id
 
-## Fiture Application
-- Simple to use
+order endpoint
 
-## Installation
-1. Clone the repo
-   ```sh
-   git clone https://github.com/permana017/Coffe-shop-FE.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
+    GET      /api/v1/order:id
+    POST     /api/v1/order
+    PATCH    /api/v1/order:id
+    DEL      /api/v1/order:id
+    
 
-## Getting Started
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+when put under a domain with `prefix`, it would look like:
 
-### Prerequisites
-This is an example of how to list things you need to use the software and how to install them.
-
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-## Contact
-permana017
+    https://www.example.com/api/users
