@@ -38,7 +38,7 @@ const authController = {
                         .then((result) => {
                             return res.status(201).send({ message: "succes", data: result })
                         }).catch((error) => {
-                            return res.status(500).send({ message: error })
+                            return res.status(400).send({ message: error })
                         })
                 }
             });
