@@ -1,7 +1,7 @@
-const multer = require('multer')
+const multer = require("multer");
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const cloudinaryUpload = require("./cloudinary");
-const path = require('path')
+const path = require("path");
 
 // const storage = multer.diskStorage({
 //   destination: function (req, file, cb) {
@@ -22,13 +22,16 @@ const storage = new CloudinaryStorage({
   },
 });
 
-
 const formUpload = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
-    console.log('baru sampe multer', file);
     let formatType = path.extname(file.originalname);
-    if (formatType == ".png" || formatType == ".jpg" || formatType == ".jpeg") {
+    if (
+      formatType == ".png" ||
+      formatType == ".jpg" ||
+      formatType == ".jpeg" ||
+      formatType == ".webp"
+    ) {
       cb(null, true);
     } else {
       cb("image not valid", false);
@@ -37,7 +40,6 @@ const formUpload = multer({
   limits: {
     fileSize: 1048576 * 10, //10 mb
   },
-})
+});
 
-
-module.exports = formUpload
+module.exports = formUpload;
